@@ -1,5 +1,7 @@
 # Monitoring and reporting
 - The Puppet Enterprise (PE) console has several tools you can use to monitor the current state of your infrastructure, review the results of planned or unplanned changes to your Puppet code, view reports, and investigate problems
+- Configure using the file
+  - /etc/puppetlabs/puppet/puppet.conf
 
 ## Monitoring infrastructure state
 ### Node run statuses
