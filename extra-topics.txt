@@ -1,0 +1,3 @@
+Puppet 5 to Puppet 7 upgrade process
+Puppet user management
+Which features are not available in latest Pupper versions? - MCollective
