@@ -10,9 +10,19 @@ tar -xf puppet-enterprise-2021.6.0-ubuntu-18.04-amd64.tar.gz
 cd puppet-enterprise-2021.6.0-ubuntu-18.04-amd64/
 ```
 
+## Note: Please make sure to
+  - Disable firewall on the puppet master
+  - Run puppet agent -t
+
+## Configure Puppet before installation
+```
+vi conf.d/pe.conf
+```
+
 ## Install
 ```
 sudo ./puppet-enterprise-installer
+sudo su -
 source /etc/profile.d/puppet-agent.sh
 ```
 
@@ -29,7 +39,8 @@ sudo nano /etc/puppetlabs/puppet/puppet.conf
 
 ## Check logs
 ```
-tail -f /var/log/syslog
+tail -f /var/log/syslog   # Ubuntu
+tail -f /var/log/messages   # Centos
 ```
 
 ## Restart Services

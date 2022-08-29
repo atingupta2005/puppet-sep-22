@@ -7,3 +7,5 @@
   - No agent configuration
   - Used as data source
   - Replace flat files
+
+# Refer: https://www.udemy.com/course/mastering-puppet-6-for-large-infrastructures-second-edition/learn/lecture/20238670#overview
