@@ -14,7 +14,7 @@ puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 
 - To check which manifest your primary server uses for a given environment, run:
 ```
-puppet config print manifest --section server --environment <ENVIRONMENT>
+puppet config print manifest --section server
 ```
 
 ## Manifest directory behavior

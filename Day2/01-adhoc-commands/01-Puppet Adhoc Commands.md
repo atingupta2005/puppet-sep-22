@@ -22,14 +22,14 @@ sudo vim /etc/puppetlabs/code/environments/production/manifests/sample.pp
 ```
 
 ```
-node '<client machine host name>'	{
+node '<node-host-name>'	{
  package { 'git':
         ensure=> intalled,
  }
 }
 
 node 'default'	{
-	$packages = ['telnet', 'htop', 'git', 'zsh']
+	$packages = ['telnet', 'tree', 'git', 'zsh']
 	package { $packages:
 	ensure => "installed"
   }
@@ -93,16 +93,16 @@ puppet --version
 
 ## To remove packages
 ```
-	package { 'apache2.0-common':
-		ensure => absent,
-	}
+package { 'apache2.0-common':
+	ensure => absent,
+}
 ```
 
 ## To update packages
 ```
-	package { 'puppet':
-		ensure => latest,
-	}
+package { 'puppet':
+	ensure => latest,
+}
 ```
 
 ## To start service at the boot time
@@ -110,23 +110,23 @@ puppet --version
 service { 'nginx':
 		ensure => running,
 		enable => true, #false disables auto-startup
-	}
+}
 ```
 
 ## To set to a specific version
 ```
-	package { 'nginx':
-		ensure => '1.1.18-1ubuntu0.1',
-	}
+package { 'nginx':
+	ensure => '1.1.18-1ubuntu0.1',
+}
 ```
 
 ## Install Apache
 ```
 puppet module list
-puppet module install puppetlabs/apache
-curl localhost
-puppet apply -e "include apache"
-curl localhost
+puppet module install puppetlabs/mysql
+puppet apply -e "include mysql::server"
+telnet localhost 3306
+puppet apply -e "include mysql::server"
 ```
 
 ## TimeSync
@@ -139,3 +139,6 @@ puppet apply -e 'service { "chronyd": ensure => running , enable => true }'
 puppet apply -e 'service { "chronyd": ensure => running , enable => true }'
 systemctl stop chronyd
 puppet apply -e 'service { "chronyd": ensure => running , enable => true }'
+
+# Remove
+puppet apply -e 'package { "chrony": ensure => absent }'

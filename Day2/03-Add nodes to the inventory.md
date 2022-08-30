@@ -13,12 +13,6 @@
 1. In the console, on the Nodes page, click Add nodes.
 1. Click Install agents.
 1. Select the transport method. This connection is used to remotely install the agent on the target node.
-	- SSH for *nix targets
-	- WinRM for Windows targets	- Refer- https://puppet.com/docs/remediate/latest/windows_remote_management_winrm.html
-		- winrm enumerate winrm/config/listener - 5985
-		- winrm quickconfig
-	 Note: In case auto install not works for windows, then run the commands directly
-		- C:\Program Files\Puppet Labs\Puppet\bin
 
 ### Note: Make sure ports are open in Azure Networking
 

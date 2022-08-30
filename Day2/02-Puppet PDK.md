@@ -1,9 +1,16 @@
 # PDK
+## On Ubuntu
 ```
 wget https://apt.puppet.com/puppet-tools-release-bionic.deb
 sudo dpkg -i puppet-tools-release-bionic.deb
 sudo apt-get update
 sudo apt-get install pdk
+```
+
+# On CentOS
+```
+wget --content-disposition 'https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=el&rel=8&arch=x86_64&ver=latest'
+rpm -ivh ./pdk-2.5.0.0-1.el8.x86_64.rpm
 ```
 
 ## Basic usage
@@ -19,7 +26,7 @@ cdpp
 
 ## Generate a module
 ```
-pdk new module my_module
+/usr/local/bin/pdk new module my_module
 cd my_module
 ```
 

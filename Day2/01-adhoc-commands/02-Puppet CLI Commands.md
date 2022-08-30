@@ -15,7 +15,7 @@ puppet config print manifest --section master --environment production
  - If the agent connects to the server the agent the manifests are located by the settings of the server
 
 #site.pp is the default/main file
-vim /etc/puppetlabs/code/environments/production/manifests/site.pp
+vim /etc/puppetlabs/code/environments/production/manifests/sample.pp
 notify {'Hello World':
 	message => "Hello World!",
 }
@@ -55,22 +55,6 @@ puppet agent -t
 puppet config print runinterval
 expr 1800 / 60
 systemctl status puppet
-
-## Create New Environments
- - By default all agents work in the production environment
- - We can create more environments on the Puppet server and configure agents to use them
-mkdir -p /etc/puppetlabs/code/environments/dev/manifests
-tree /etc/puppetlabs/code/environments
-clear
-
-#When our agent runs, it will request for settings from dev environment
-puppet config set environment dev --section=agent
-puppet agent -t
-
-#Swtich back
-puppet config set environment production --section=agent
-puppet agent -t
-
 
 ## BASH Aliases
  - We may often move to the manifest directory
@@ -147,6 +131,6 @@ file_line { 'root_login_ssh':
  - Many tasks can be managed using	these resources
 
 ## Organize Code On Server
- - Creating or own modules will help us reuse and orgainize code on the server.
+ - Creating or own modules will help us reuse and organize code on the server.
  - Modules can be shared or created within an environment
  - We only have the production environment so we will use that
