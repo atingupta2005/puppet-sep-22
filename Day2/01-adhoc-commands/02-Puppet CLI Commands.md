@@ -28,34 +28,39 @@ puppet agent -t
 
 ## Agent Run
  - Be default the agent runs every 30 minutes. We can force a run from the CLI.
+```
 puppet config print runinterval
 expr 1800 / 60
 puppet agent -t
-
+```
 #Notice: Hello World!
 
 ## Working with Default Environments
+```
 alias cdpp="cd $(puppet config print manifest)"
 cdpp
 vim 01.pp
 notify {'Hello World':
 	message => "Hello World!",
 }
+```
 
+```
 puppet apply 01.pp
 puppet agent -t
-
+```
+```
 vim 02.pp
 notify {'Hello World 2':
 	message => "Hello World 2!",
 }
-
+```
+```
 puppet agent -t
-
 puppet config print runinterval
 expr 1800 / 60
 systemctl status puppet
-
+```
 ## BASH Aliases
  - We may often move to the manifest directory
  - We can create an alias to make this easier
