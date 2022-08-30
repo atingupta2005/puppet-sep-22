@@ -1,0 +1,39 @@
+# Add a module
+mod 'puppetlabs/iis', '7.0.0'
+mod 'puppetlabs/pwshlib', '0.4.0'
+
+# Configure your desired state
+## Create your classification group
+1. In the console, click Node groups, and click Add group.
+1. Specify options for the new node group:
+	Parent name: All Nodes
+	Group name: Windows Classification
+	Environment: production
+	Environment group: do not select
+1. Click Add.
+
+## Create your iis node group
+1. After you create your parent classification group, make the iis node group a child of it.
+1. In the console, click Node groups, and click Add group.
+1. Specify options for the new node group:
+	Parent name: All Classification
+	Group name: iis
+	Environment: production
+	Environment group: do not select
+1. Click Add.
+
+
+## Add nodes to the iis node group
+1. In the console, click Node groups and select the iis node group you just created.
+1. On the Rules tab, under Certname, enter the certname of a node you want to add to the iis node group.
+1. Click Pin node.
+1. Repeat for additional nodes you want to add to the iis group.
+1. When you are done pinning nodes, commit changes.
+
+## Run Puppet on your IIS nodes
+1. In the console, on the Jobs page, click Run Puppet.
+1. Under Run options, do not select anything.
+1. From the list of target types, select Node group.
+1. In the Chose a node group box, search for the iis node group and click Select.
+1. Click Run job.
+	 - View the job status and a list of previous Puppet jobs on the Jobs page. To rerun the job, click Run again and choose to rerun the it on all nodes or only on the nodes that failed during the initial run.
