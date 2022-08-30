@@ -6,8 +6,13 @@
 
 ## Add hosts entry:
  - On each client machine add the host entry as per below:
-  - sudo su
-  - echo "<pe-server-ip-address> puppet <generated-domain-name>" >> /etc/hosts
+ ```
+sudo su
+```
+
+```
+echo "<pe-server-ip-address> puppet <generated-domain-name>" >> /etc/hosts
+```
 
 ## Add agent nodes
 1. In the console, on the Nodes page, click Add nodes.

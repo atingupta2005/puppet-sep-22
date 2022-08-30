@@ -2,12 +2,16 @@
  - Using the puppet config command we can view and set configuration parameters including the path to the manifest
  - If the manifest is a directory then each manifest is processed in alphanumeric order
 # Print settings from Puppet.confg file as well as the defaults
+```
 puppet config print
 puppet config print config
 puppet config print manifest
+```
 
 #To specify which section from config file to print and also which environment
+```
 puppet config print manifest --section master --environment production
+```
 
 ## Manifest Files
  - The puppet agent can apply local manifests by specifying the path
@@ -15,16 +19,24 @@ puppet config print manifest --section master --environment production
  - If the agent connects to the server the agent the manifests are located by the settings of the server
 
 #site.pp is the default/main file
+```
 vim /etc/puppetlabs/code/environments/production/manifests/sample.pp
+```
+```
 notify {'Hello World':
 	message => "Hello World!",
 }
+```
 
 #To apply locally by specifying the path to manifest file
+```
 puppet apply /etc/puppetlabs/code/environments/production/manifests/sample.pp
+```
 
 #To get from the puppet server
+```
 puppet agent -t
+```
 
 ## Agent Run
  - Be default the agent runs every 30 minutes. We can force a run from the CLI.
@@ -64,13 +76,27 @@ systemctl status puppet
 ## BASH Aliases
  - We may often move to the manifest directory
  - We can create an alias to make this easier
+ ```
 alias cdpp="cd $(puppet config print manifest)"
+```
+```
 alias
+```
+```
 vim ~/.bashrc #add the line to bottom of file
+```
+```
 alias cdpp="cd /etc/puppetlabs/code/environments/production/manifests"
+```
+```
 unalias cdpp
+```
+```
 source ~/.bashrc
+```
+```
 alias ; cdpp; pwd
+```
 
 # Resources
  - Resources are the main building block of Puppet:
@@ -83,11 +109,19 @@ alias ; cdpp; pwd
 ## List Resources and Help
  - The first command list all resource types. We can gain help on a type with describe and we can print the example configuration from a resource.
 
+```
 puppet resource --type
+```
+
+```
 puppet describe service
+```
+
 
 #service should show as running and enabled
+```
 puppet resource service atd
+```
 
 #If at is not installed on my system so should show as stopped and disabled
 
