@@ -96,26 +96,33 @@ puppet resource service atd
 
 ## Modules
  - Modules are great ways to encapsulate code in to reusable lumps. Puppet forge is a great resource for modules that have been shared. The stdlib from puppetlabs is always useful
+```
 puppet module list
 puppet module install puppetlabs/stdlib
 puppet module uninstall puppetlabs/stdlib --force
 #To install modules in a shared environment so that it can be used in any environment
 #Installing in a shared module directory makes it available across environments
 puppet module install -i /etc/puppetlabs/code/modules puppetlabs/stdlib
+```
 
 #Examples
+```
 cat /etc/puppetlabs/code/modules/stdlib/examples/file_line.pp
+```
 
 ## Example Manifest From Module
  - A puppet manifest will have the extension .pp and contains code to be run on agents. We can use puppet apply to execute local manifests
+```
 cp /etc/puppetlabs/code/modules/stdlib/examples/file_line.pp ~/
 puppet apply ~/file_line.pp
 cat /tmp/dansfile
+```
 
 ## File Edits Using file_line Resource
  - Rather than deliver a complete file we can edit the file with file_line. The file_line resource that ships with the puppetlabs/stdlib module and shares the same top level namespace. We can easily replace or add lines
 
 #Example Module (Require tag):
+```
 service { 'sshd':
 	ensure => 'running',
 	enable => true,
@@ -127,6 +134,7 @@ file_line { 'root_login_ssh':
 	match => '^PermitRootLogin',
 	notify => Service['sshd'],
 }
+```
 
 # The BIG Three
  - The 3 big resources are:
