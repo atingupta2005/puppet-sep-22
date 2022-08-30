@@ -28,34 +28,39 @@ puppet agent -t
 
 ## Agent Run
  - Be default the agent runs every 30 minutes. We can force a run from the CLI.
+```
 puppet config print runinterval
 expr 1800 / 60
 puppet agent -t
-
+```
 #Notice: Hello World!
 
 ## Working with Default Environments
+```
 alias cdpp="cd $(puppet config print manifest)"
 cdpp
 vim 01.pp
 notify {'Hello World':
 	message => "Hello World!",
 }
+```
 
+```
 puppet apply 01.pp
 puppet agent -t
-
+```
+```
 vim 02.pp
 notify {'Hello World 2':
 	message => "Hello World 2!",
 }
-
+```
+```
 puppet agent -t
-
 puppet config print runinterval
 expr 1800 / 60
 systemctl status puppet
-
+```
 ## BASH Aliases
  - We may often move to the manifest directory
  - We can create an alias to make this easier
@@ -91,26 +96,33 @@ puppet resource service atd
 
 ## Modules
  - Modules are great ways to encapsulate code in to reusable lumps. Puppet forge is a great resource for modules that have been shared. The stdlib from puppetlabs is always useful
+```
 puppet module list
 puppet module install puppetlabs/stdlib
 puppet module uninstall puppetlabs/stdlib --force
 #To install modules in a shared environment so that it can be used in any environment
 #Installing in a shared module directory makes it available across environments
 puppet module install -i /etc/puppetlabs/code/modules puppetlabs/stdlib
+```
 
 #Examples
+```
 cat /etc/puppetlabs/code/modules/stdlib/examples/file_line.pp
+```
 
 ## Example Manifest From Module
  - A puppet manifest will have the extension .pp and contains code to be run on agents. We can use puppet apply to execute local manifests
+```
 cp /etc/puppetlabs/code/modules/stdlib/examples/file_line.pp ~/
 puppet apply ~/file_line.pp
 cat /tmp/dansfile
+```
 
 ## File Edits Using file_line Resource
  - Rather than deliver a complete file we can edit the file with file_line. The file_line resource that ships with the puppetlabs/stdlib module and shares the same top level namespace. We can easily replace or add lines
 
 #Example Module (Require tag):
+```
 service { 'sshd':
 	ensure => 'running',
 	enable => true,
@@ -122,6 +134,7 @@ file_line { 'root_login_ssh':
 	match => '^PermitRootLogin',
 	notify => Service['sshd'],
 }
+```
 
 # The BIG Three
  - The 3 big resources are:
