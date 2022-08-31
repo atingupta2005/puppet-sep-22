@@ -1,1 +1,1 @@
-52.255.162.148,atingupta2005,Azure@123456
+52.255.162.148,atingupta2005,<Password-change-it>
