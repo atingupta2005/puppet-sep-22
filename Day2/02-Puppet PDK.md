@@ -9,9 +9,13 @@ sudo apt-get install pdk
 
 # On CentOS
 ```
-wget --content-disposition 'https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=el&rel=8&arch=x86_64&ver=latest'
-rpm -ivh ./pdk-2.5.0.0-1.el8.x86_64.rpm
-```
+rpm -qa | grep pdk
+rpm -e pdk-2.5.0.0-1.el8.x86_64
+rpm -qa | grep puppet-tools
+rpm -e puppet-tools-release-1.0.0-6.el8.noarch
+wget --content-disposition 'https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=el&rel=7&arch=x86_64&ver=latest'
+rpm -ivh ./pdk-2.5.0.0-1.el7.x86_64.rpm
+``
 
 ## Basic usage
 - PDK can generate modules and classes, validate module metadata, style, and syntax, and run unit tests.
@@ -26,7 +30,8 @@ cdpp
 
 ## Generate a module
 ```
-/usr/local/bin/pdk new module my_module
+pdk new module my_module
+tree my_module
 cd my_module
 ```
 
@@ -34,6 +39,7 @@ cd my_module
 ### From the command line, in your module's directory, run:
 ```
 pdk new class class_name
+tree .
 ```
 
 ## Validating a module

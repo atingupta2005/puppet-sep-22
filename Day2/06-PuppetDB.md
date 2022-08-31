@@ -7,3 +7,14 @@
   - No agent configuration
   - Used as data source
   - Replace flat files
+
+
+cd /etc/puppetlabs/puppetdb/conf.d
+nano jetty.ini
+  - host = 0.0.0.0
+puppet resource service pe-puppetdb ensure=stopped
+puppet resource service pe-puppetdb ensure=running
+
+Refer: https://puppet.com/docs/puppetdb/7/api/query/v4/reports.html
+
+curl http://40.87.12.160:8080/pdb/query/v4/reports
