@@ -13,8 +13,5 @@ sudo bash -c 'echo 40.87.12.160 puppet vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.b
 - Note replace the IP address, username and the password
 ```
 sudo yum install -y sshpass
-MACHINE_IP="20.232.37.141"
-USER_ID="akhila"
-PASSWORD="Akhila@7731941941"
-sshpass -p $PASSWORD ssh -o StrictHostKeychecking=no $USER_ID@$MACHINE_IP 'bash -s' < puppet_install.sh
+./install-node-agents-in-bulk.sh
 ```
