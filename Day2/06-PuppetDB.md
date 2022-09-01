@@ -15,6 +15,23 @@ nano jetty.ini
 ```
   - host = 0.0.0.0
 
+- Locate the puppet_enterprise::profile::puppetdb class, from the parameters drop-down list, select listen_address, and update the value to 0.0.0.0.
+- Note: setting the listen_address to 0.0.0.0 allows all IP addresses to access the PuppetDB performance console.
+
+## To enable and view the performance dashboard:
+- Refer: https://support.puppet.com/hc/en-us/articles/208484488-Enable-and-view-the-PuppetDB-performance-dashboard-for-Puppet-Enterprise-3-3-2-to-2019-1
+- Log into the console.
+- Select Nodes in the main navigation bar at the top of the page.
+- Select your PuppetDB node. (On a monolithic installation, PuppetDB is on the master.)
+- Click Edit.
+- Under Classes, locate the pe_puppetdb::pe class, and click Edit parameters.
+- Scroll down to the the listen_address parameter and update the value with the name of your node.
+- Click Done.
+- Log into the PuppetDB node as root.
+- Run puppet agent -t.
+- Navigate to http://vmpuppetmstr.eastus.cloudapp.azure.com:8080/pdb/dashboard/index.html
+
+
 ```
 puppet resource service pe-puppetdb ensure=stopped
 puppet resource service pe-puppetdb ensure=running
@@ -25,3 +42,6 @@ puppet resource service pe-puppetdb ensure=running
 ```
 curl http://40.87.12.160:8080/pdb/query/v4/reports
 ```
+
+## Create Reports using Power BI Desktop
+- Refer: https://puppet.com/blog/power-your-puppet-reports-with-powerbi-in-10-minutes/
