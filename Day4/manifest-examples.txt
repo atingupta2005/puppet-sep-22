@@ -1,0 +1,291 @@
+package { 'screen':
+	ensure => 'installed',
+}
+
+package { 'localpkg':
+	install_options => ['--enablerepo', 'company_repo'],
+}
+
+package { 'screen':
+	ensure => 'purged',
+}
+
+package { 'screen':
+ ensure => 'latest',
+}
+
+package { 'screen': ensure => 'installed' }
+package { 'strace': ensure => 'installed' }
+package { 'sudo':   ensure => 'installed' }
+
+# you can use a global package parameter
+Package { ensure => 'installed' }
+
+package { 'screen': }
+package { 'strace': }
+package { 'sudo':   }
+
+# ... and even combine it a global package parameter
+Package { ensure => 'installed' }
+
+$enhancers = [ 'screen', 'strace', 'sudo' ]
+
+package { $enhancers: }
+
+
+------------------
+# determine the apache-server package based on the operatingsystem fact
+$apache_server = $::operatingsystem ? {
+	Fedora  => 'httpd',
+	default => 'apache2',
+}
+
+package { $apache_server:
+	ensure => 'present',
+	alias  => 'apache_server',
+}
+
+file { '/var/www/html/index.html':
+	source  => 'puppet:///modules/apache_server/index.html',
+	require => Package['apache_server'],
+}
+
+------------------------
+
+package { 'pySMART':
+	ensure   => 'installed',
+	provider => 'pip',
+}
+
+----------------------------
+# in your site.pp
+Package { provider => 'aptrpm' }
+
+---------------------------------------
+
+# create a directory
+file { '/etc/site-conf':
+ensure => 'directory',
+}
+
+# a fuller example, including permissions and ownership
+file { '/var/log/admin-app-log':
+ensure => 'directory',
+owner  => 'root',
+group  => 'wheel',
+mode   => '0750',
+}
+
+# this example is incorrect and creates a file
+file { '/etc/site-conf/':
+ensure => 'present',
+}
+
+-----------------------------
+  # preferred symlink syntax
+  file { '/tmp/link-to-motd':
+    ensure => 'link',
+    target => '/etc/motd',
+  }
+
+  # older, less clear syntax
+  file { '/tmp/link-to-motd':
+    ensure => '/etc/motd',
+  }
+
+---------------------------------
+
+# or you can assign them to a variable and use them in the resource
+$whisper_dirs = [ '/usr/local/whisper/', '/usr/local/whisper/2.0',
+				'/usr/local/whisper/2.0/bin', '/usr/local/whisper/2.0/log',
+			  ]
+
+file { $whisper_dirs:
+	ensure => 'directory',
+	owner  => 'root',
+	group  => 'wheel',
+	mode   => '0750',
+}
+
+-------------------------
+  # remove all files from /tmp/dropbox
+  tidy { 'clean_dropbox':
+    path    => '/tmp/dropbox',
+    recurse => 1,
+  }
+------------------------------
+# remove all files, in /tmp/image_cache,
+# that are older than 1 week
+tidy { 'prune_old_caches':
+path    => '/tmp/image_cache',
+age     => '1w',
+recurse => 1,
+}
+
+-----------------------------------
+file { '/tmp/hello-file':
+ensure  => 'present',
+replace => 'no', # this is the important property
+content => "From Puppet\n",
+mode    => '0644',
+}
+
+------------------------------------
+  service { 'sshd':
+    ensure  => 'running',
+    enable  => true,
+    require => Package['openssh-server'],
+  }
+
+  # add a notify to the file resource
+  file { '/etc/ssh/sshd_config':
+    notify  => Service['sshd'],  # this sets up the relationship
+    mode    => '0600',
+    owner   => 'root',
+    group   => 'root',
+    require => Package['openssh-server'],
+    content => template('ssh/sshd_config_{operatingsystem}.erb'),
+  }
+
+-------------------------------------------
+include ::wget
+
+wget::fetch { 'https://www.unixdaemon.net/index.xml':
+	destination => '/tmp/unixdaemon-feed.xml',
+	timeout     => 15,
+	verbose     => true,
+}
+
+
+-----------------------------------------------
+
+include ::wget
+
+node "<master-node>": {
+wget::fetch { 'https://www.unixdaemon.net/index.xml':
+	destination => '/tmp/unixdaemon-feed.xml',
+	timeout     => 15,
+	verbose     => true,
+}
+}
+
+node "<agent-nodes>": {
+# add a notify to the file resource
+file { '/tmp/unixdaemon-feed.xml':
+	notify  => Service['sshd'],  # this sets up the relationship
+	mode    => '0600',
+	owner   => 'root',
+	group   => 'root',
+	require => Package['openssh-server'],
+	content => '/tmp/unixdaemon-feed.xml',
+}
+}
+
+--------------------------------------
+# create a fully qualified full host entry with an alias
+host { 'ntpserver.example.com':
+	ip           => '10.100.10.50',
+	host_aliases => 'timeserver',
+}
+---------------------------------------
+host { 'syslog':
+	ensure => 'absent',
+}
+
+----------------------------------------
+
+# remove ALL unmanaged host resources
+resources { 'host': purge => true }
+
+------------------------------------------
+
+exec { 'refresh_cache':
+	command => 'echo "10.0.0.1 myserver" >> /etc/hosts',
+	path    => '/usr/local/bin/:/bin/',
+	onlyif  => 'grep -c myserver /etc/hosts',
+}
+
+-----------------------------------------------
+  service { 'cron':
+    ensure => 'running',
+  }
+------------------------------------------------------------
+
+  service { 'puppet':
+    enable => true,
+  }
+
+--------------------------------------------------
+  service { 'cron':
+    ensure => 'stopped',
+  }
+------------------------------
+
+  # add user, create homedir and set a password
+  user { 'finch':
+    ensure     => 'present',
+    comment    => 'H Finch',
+    managehome => true,
+    # note the single quotes to stop $ expanding
+    password   => '$6$LD5..snip...gNY1',
+  }
+----------------------------------------------
+node "default": {
+user { ['fusco','user1','user2','user3']:
+	ensure           => 'present',
+	# note the single quotes to stop $ expanding
+	password         => '$6$LD5..snip...gNY1',
+	password_max_age => 30,
+}
+}
+-------------------------------------------------
+authconfig --test | grep hashing
+
+
+--------------------------------------------
+
+  # create a group with a specific GID.
+  group { 'apacheadmins':
+    gid => 2002,
+  }
+-----------------------------------------------
+group { 'logusers':
+ensure => absent,
+}
+
+----------------------------------------------
+  # this is the important part
+  $secret = Sensitive('Peter Parker')
+
+  notice($secret)
+
+  file { '/tmp/spider-man':
+    ensure  => 'present',
+    content => $secret,
+  }
+--------------------------------------------------
+puppet resource package puppet
+puppet resource host localhost.localdomain
+puppet resource user daemon
+
+---------------------------------------------------
+
+$minute = fqdn_rand(59)
+
+  notify { "I got ${minute}": }
+
+  cron { 'freshen_cache':
+    command => '/usr/local/sbin/freshen_cache',
+    user    => 'root',
+    minute  => $minute, # this value will vary per host
+  }
+
+------------------------------------
+  cron { 'freshen_repos':
+    ensure  => 'present',
+    command => '/usr/local/sbin/freshen_repos',
+    user    => 'root',
+    special => 'daily', # translates to "0 0 * * *"
+  }
+
+-------------------------------------
