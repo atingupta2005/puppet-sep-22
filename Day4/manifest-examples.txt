@@ -1,5 +1,7 @@
-package { 'screen':
-	ensure => 'installed',
+node 'default' {
+	package { 'screen':
+		ensure => 'installed',
+}
 }
 
 package { 'localpkg':
