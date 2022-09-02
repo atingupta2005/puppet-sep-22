@@ -7,3 +7,13 @@
 sudo rpm -Uvh https://yum.puppet.com/puppet-tools-release-el-6.noarch.rpm
 sudo yum install puppet-bolt -y
 ```
+
+
+## Installing Bolt on Ubuntu
+```
+sudo apt-get update
+wget https://apt.puppet.com/puppet-tools-release-bionic.deb
+sudo dpkg -i puppet-tools-release-bionic.deb
+sudo apt-get update
+sudo apt-get install puppet-bolt
+```
