@@ -39,6 +39,7 @@ steps:
   - name: install_apache
     task: package
     targets: $targets
+    parameters:
       action: install
       name: httpd
     description: "Install Apache using the packages task"
