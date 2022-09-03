@@ -1,0 +1,1000 @@
+  186  systemctl reload puppet.services
+  187  systemctl reload puppet.service
+  188  systemctl restart puppet.service
+  189  systemctl status puppet.service
+  190  systemctl stop puppet.service
+  191  systemctl status puppet.service
+  192  systemctl status puppetserver
+  193  systemctl status puppet
+  194  systemctl start  puppet
+  195  ps -aux | grep puppet
+  196  service --status-all
+  197  systemctl --type
+  198  systemctl --type=service
+  199  systemctl --type=service | grep puppet
+  200  systemctl status pe-puppetserver
+  201  systemctl restart pe-puppetserver
+  202  history
+  203  nano /etc/hosts
+  204  ping ping vmpuppetmstr.eastus.cloudapp.azure.com
+  205  ping vmpuppetmstr.eastus.cloudapp.azure.com
+  206  uri="https://vmpuppetmstr.eastus.cloudapp.azure.com:8140/packages/current/install.bash"
+  207  nano /etc/puppetlabs/puppet/puppet.conf
+  208  clear
+  209  pdk
+  210  alias cdpp="cd /etc/puppetlabs/code/environments/production/manifests"
+  211  clear
+  212  cdpp
+  213  ps
+  214  ls
+  215  rm -rg my_module/
+  216  rm -rf my_module/
+  217  ls
+  218  pdk new module atin_module
+  219  cd atin_module/
+  220  ls
+  221  tree .
+  222  pdk new class atin_class
+  223  cat /etc/puppetlabs/code/environments/production/manifests/atin_module/manifests/atin_class.pp
+  224  pdk validate
+  225  pdk test unit
+  226  pwd
+  227  pdk new module anindya_module
+  228  cd /etc/puppetlabs/code/modules/
+  229  ll
+  230  cd
+  231  ll
+  232  cd anindya_module/
+  233  ll
+  234  tree
+  235  cd
+  236  pdk validate
+  237  cd anindya_module/
+  238  pdk validate
+  239  pdk testunit
+  240  pdk test unit
+  241  ll
+  242  cd /etc/puppetlabs/code/environments/
+  243  ls
+  244  cd production/
+  245  ls
+  246  clear
+  247  ls
+  248  cd manifests/
+  249  ls
+  250  nano myuser.pp
+  251  puppet agent -t
+  252  cat /etc/group
+  253  clear
+  254  nano myuser.pp
+  255  puppet agent -t
+  256  cat /etc/passwd
+  257  clear
+  258  nano myuser.pp
+  259  puppet agent -t
+  260  cat /etc/passwd
+  261  nano myuser.pp
+  262  clear
+  263  puppet describe user
+  264  puppet describe user | grep password
+  265  puppet describe user
+  266  nano myuser.pp
+  267  puppet agent -t
+  268  nano myuser.pp
+  269  puppet agent -t
+  270  su jane
+  271  puppet describe user
+  272  yum install mkpasswd
+  273  sudo dnf install mkpasswd
+  274  yum whatprovides "*/mkpasswd"
+  275  python -c 'import crypt,getpass; print(crypt.crypt(getpass.getpass(), crypt.mksalt(crypt.METHOD_SHA512)))'
+  276  python -c 'import crypt,getpass; print(crypt.crypt(getpass.getpass(), crypt.mksalt(crypt.METHOD_SHA256)))'
+  277  authconfig --test | grep hashing
+  278  python -c 'import crypt,getpass; print(crypt.crypt(getpass.getpass(), crypt.mksalt(crypt.METHOD_SHA512)))'
+  279  cd /etc/puppetlabs/code/environments/production/manifests/
+  280  ls
+  281  nano myuser.pp
+  282  puppet agent -t
+  283  gem install r10k
+  284  /opt/puppetlabs/puppet/bin/gem install r10k
+  285  1 gem installed
+  286  r10k help
+  287  r10k help
+  288  cd /etc/puppetlabs/puppetserver/ssh/
+  289  ls
+  290  ssh-keygen --help
+  291  clear
+  292  ssh-keygen -t rsa -f id-control_repo.rsa
+  293  ls
+  294  pwd
+  295  cd ..
+  296  pwd
+  297  find  . -name common.yaml
+  298  ls
+  299  clear
+  300  cd code
+  301  ls
+  302  pwd
+  303  cd ..
+  304  find  . -name common.yaml
+  305  nano ./code/environments/production/data/common.yaml
+  306  puppet agent -t
+  307  clear
+  308  puppet agent -t
+  309  nano ./code/environments/production/data/common.yaml
+  310  ls /var/cache/r10k
+  311  mkdir  /var/cache/r10k
+  312  ls /var/cache/r10k
+  313  nano ./code/environments/production/data/common.yaml
+  314  puppet agent -t
+  315  nano ./code/environments/production/data/common.yaml
+  316  cd /etc/puppetlabs/puppetserver/ssh/
+  317  ls
+  318  cat id-control_repo.rsa.pub
+  319  puppet agent -t
+  320  curl http://40.87.12.160:8080/pdb/query/v4/reports
+  321  curl http://40.87.12.160:8081/pdb/query/v4/reports
+  322  curl -g  http://40.87.12.160:8081/pdb/query/v4/reports
+  323  curl -g  http://40.87.12.160:8080/pdb/query/v4/reports
+  324  telnet 40.87.12.160 8080
+  325  curl   http://40.87.12.160:8081/pdb/query/v4/reports
+  326  curl   http://40.87.12.160:8081/pdb
+  327  cd /etc/puppetlabs/puppetdb/conf.d
+  328  nano jetty.ini
+  329  puppet resource service pe-puppetdb ensure=stopped
+  330  puppet resource service pe-puppetdb ensure=running
+  331  curl http://40.87.12.160:8080/pdb/query/v4/reports
+  332  clear
+  333  curl http://40.87.12.160:8080/pdb/query/v4/reports/62498c146ad4d790b07457bc3a8e1b1aa3a8f4a2/resources
+  334  clear
+  335  curl http://40.87.12.160:8080/pdb/query/v4/reports/39f41ea0ec7f848322bf76c1007a512890c59681/resources
+  336  clear
+  337  -------------------------------------------------------------------
+  338  curl http://40.87.12.160:8080/pdb/query/v4/reports/39f41ea0ec7f848322bf76c1007a512890c59681/resources
+  339  curl http://40.87.12.160:8080/pdb/query/v4/reports/39f41ea0ec7f848322bf76c1007a512890c59681/resources > myreport.json
+  340  ls
+  341  ll -al
+  342  ll -alh
+  343  curl http://40.87.12.160:8080/pdb/query/v4/reports/62498c146ad4d790b07457bc3a8e1b1aa3a8f4a2/resources
+  344  r10k help
+  345  vim /etc/puppetlabs/r10k/r10k.yaml
+  346  cd /etc/puppetlabs/code/environments/
+  347  ll
+  348  r10k deploy --help
+  349  r10k deploy environment -p production
+  350  r10k deploy display
+  351  cd
+  352  cd /etc/puppetlabs/code/
+  353  ll
+  354  ll modules/
+  355  cd environments/
+  356  ll
+  357  cd ..
+  358  ll
+  359  cd modules/
+  360  ll
+  361  ll stdlib/
+  362  module install --help
+  363  puppet module install --help
+  364  pwd
+  365  ll
+  366  ll /var/opt/
+  367  cat /etc/puppetlabs/puppet/puppet.conf | more
+  368  cat /etc/puppetlabs/puppet/puppet.conf | grep base
+  369  cat /etc/puppetlabs/puppet/puppet.conf | grep base*
+  370  ll /opt/puppetlabs/puppet/modules/
+  371  pwd
+  372  cd ../../
+  373  ll
+  374  cd puppet
+  375  ll
+  376  vi puppetdb.conf
+  377  curl https://vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.bx.internal.cloudapp.net:8081
+  378  curl http://40.87.12.160:8080/pdb/query/v4/reports
+  379  ll
+  380  pwd
+  381  cd ../puppetdb/conf.d/
+  382  ll
+  383  vi jetty.ini
+  384  service pe-puppetdb restart
+  385  curl http://40.87.12.160:8080/pdb/query/v4/reports
+  386  telnet 40.87.12.160 8080
+  387  netstat -na | grep 8080
+  388  pwd
+  389  cd ../../puppet
+  390  ll
+  391  ll ssl/
+  392  curl http://40.87.12.160:8080/pdb/query/v4/reports
+  393  pwd
+  394  ll
+  395  pwd
+  396  cd ../code/environments/production/manifests/atin_module/
+  397  ll
+  398  pwd
+  399  puppet config print manifest --section server
+  400  vi /etc/puppetlabs/puppet/puppet.conf
+  401  pwd
+  402  cd ../../../
+  403  ll
+  404  cd ..
+  405  ll
+  406  find . -name environment.conf -print
+  407  ll
+  408  cd environments/production/
+  409  ll
+  410  vi environment.conf
+  411  vi /etc/environment
+  412  pwd
+  413  vi /etc/puppetlabs/puppet/puppet.conf
+  414  puppet config print
+  415  ll
+  416  vi environment.conf
+  417  pwd
+  418  puppet resource service puppet ensure=stopped
+  419  nano /etc/sysconfig/pe-puppetdb
+  420  cd /etc/puppetlabs/puppetdb/conf.d
+  421  ls
+  422  nano jetty.ini
+  423  ls
+  424  rm -rf myreport.json
+  425  cat database.ini
+  426  ls
+  427   puppet resource service pe-puppetdb ensure=stopped
+  428      puppet resource service pe-puppetdb ensure=running
+  429  systemctl status puppetdb
+  430  systemctl status pe-puppetdb
+  431  history
+  432  nano jetty.ini
+  433   puppet resource service pe-puppetdb ensure=stopped
+  434      puppet resource service pe-puppetdb ensure=running
+  435  curl http://vmpuppetmstr.eastus.cloudapp.azure.com:8080
+  436  curl http://40.87.12.160:8080/pdb/query/v4/reports
+  437  history | grep query
+  438  puppet module install pe_status_check
+  439  puppet module install puppetlabs-pe_status_check
+  440  cd /etc/puppetlabs/code/environments/
+  441  ls
+  442  cd production/
+  443  ls
+  444  cd manifests/
+  445  ls
+  446  vim site.pp
+  447  puppet agent -t
+  448  rm -rf sample-amit.pp
+  449  puppet agent -t
+  450  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  451  puppet access login
+  452  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  453  history
+  454  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  455  history
+  456  vim site.pp
+  457  puppet resource service puppet ensure=running
+  458  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  459  puppet agent -t
+  460  puppet plan run pe_status_check::infra_summary
+  461  puppet plan run pe_status_check::agent_summary
+  462  puppet plan run pe_status_check::infra_summary -p '{"indicator_exclusions": ["S0001","S0021"]}'
+  463  puppet query 'inventory[certname] { facts.pe_status_check.S0001 = false }'
+  464  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  465  puppet query 'inventory[certname] { facts.pe_status_check.S0040 = false }'
+  466  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  467  cd /etc/puppetlabs/
+  468  ls
+  469  cd code/
+  470  ls
+  471  cd environments
+  472  ls
+  473  cd production/
+  474  ls
+  475  cd manifests/
+  476  ls
+  477  cat atin.pp
+  478  puppet agent -t
+  479  puppet infrastructure status
+  480  curl https://vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.bx.internal.cloudapp.net:4433/status/v1/services
+  481  cd /etc/puppetlabs/code/environments/production/
+  482  ls
+  483  cd manifests/
+  484  ls
+  485  nano site.pp
+  486  puppet agent -t
+  487  puppet module install puppetlabs-puppet_metrics_collector
+  488  cd /opt/puppetlabs/puppet-metrics-collector
+  489  ls
+  490  for i in <service_name>/primary.example.com/*.json; do echo "$(python -m json.tool < $i)" > $i; done
+  491  grep average-free-jrubies puppetserver/primary.example.com/*.json
+  492  grep queue_depth puppetdb/primary.example.com/*.json
+  493  grep average-free-jrubies puppetserver/vmpuppet10/*.json
+  494  ls
+  495  ls puppetserver/
+  496  grep average-free-jrubies puppetserver/vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.bx.internal.cloudapp.net/*.json
+  497  grep queue_depth puppetdb/vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.bx.internal.cloudapp.net/*.json
+  498  nano /etc/puppetlabs/puppet/puppet.conf
+  499  service puppetserver restart
+  500  service pe-puppetserver restart
+  501  cd /etc/puppetlabs/r10k/
+  502  ls
+  503  cat r10k.yaml
+  504  ls
+  505  cat r10k.yaml.example
+  506  nano r10k.yaml
+  507  vim /etc/puppetlabs/r10k/r10k.yaml
+  508  cd /etc/puppetlabs/code/
+  509  ls
+  510  mv environments environments_bkp
+  511  mkdir environments
+  512  cd environments
+  513  ls
+  514  vim Puppetfile
+  515  r10k puppetfile check
+  516  git clone https://github.com/atingupta2005/puppet_env .
+  517  ls
+  518  rm Puppetfile
+  519  git clone https://github.com/atingupta2005/puppet_env .
+  520  ls
+  521  ll
+  522  ls -al
+  523  vim Puppetfile
+  524  git add Puppetfile
+  525  git commit -m "-"
+  526  git push origin production
+  527  git branch -M production
+  528  git push origin production
+  529  r10 deploy environment -p production
+  530  r10k deploy environment -p production
+  531  ls
+  532  tree .
+  533  ls
+  534  vim /etc/puppetlabs/r10k/r10k.yaml
+  535  ks
+  536  ls
+  537  cd production/
+  538  ks
+  539  ls
+  540  cd ..
+  541  ls
+  542  cd ..
+  543  ls
+  544  history
+  545  r10k deploy environment
+  546  ls
+  547  cd environments
+  548  ls
+  549  ls -al
+  550  cd production/
+  551  ls
+  552  ls -al
+  553  git status
+  554  git branch
+  555  git add *
+  556  git commit -am "-"
+  557  git push
+  558  git status
+  559  git branch
+  560  git checkout production
+  561  git remote -v
+  562  r10k deploy environment -pv
+  563  git remote -v
+  564  ls /var/cache/r10k/https---github.com-atingupta2005-puppet_env.git/
+  565  ls
+  566  vim /etc/puppetlabs/r10k/r10k.yaml
+  567  cd /etc/puppetlabs/code
+  568  ls
+  569  cd environments
+  570  rm -rf *
+  571  ls
+  572  cd /var/cache/r10k
+  573  ls
+  574  ll
+  575  rm -rf https---github.com-atingupta2005-puppet_env.git
+  576  ls
+  577  ll
+  578  cd /etc/puppetlabs/code
+  579  cd environments
+  580  git clone git@github.com:atingupta2005/puppet_env.git .
+  581  ls ~/.ssh/
+  582  ls
+  583  git clone --help
+  584  git clone git@github.com:atingupta2005/puppet_env.git .
+  585  ssh-key-hen
+  586  ssh-keygen
+  587  ls /etc/puppetlabs/puppetserver/sshid-control_repo.rsa
+  588  ls /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
+  589  vim /etc/puppetlabs/r10k/r10k.yaml
+  590  cp /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa ~/.ssh/id_rsa
+  591  cp /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub ~/.ssh/id_rsa.pub
+  592  git clone git@github.com:atingupta2005/puppet_env.git .
+  593  ls
+  594  r10k puppetfile check
+  595  r10k deploy environment -pv
+  596  ll
+  597  cd production/
+  598  ls
+  599  ll
+  600  git status
+  601  git add *
+  602  git commit -am "-"
+  603  git status
+  604  git branch
+  605  git branch -a
+  606  git branch -A
+  607  git push
+  608  git push origin production
+  609  cd /var/puppetlabs/r10
+  610  cd /var/puppetlabs/r10k
+  611  ks
+  612  /var/cache/r10k
+  613  ls
+  614  ls /var/cache/r10k
+  615  cd /var/cache/r10k
+  616  ls
+  617  git branch
+  618  ls
+  619  cd git@github.com-atingupta2005-puppet_env.git/
+  620  ls
+  621  git branch
+  622  ls
+  623  git push
+  624  git pull
+  625  ls
+  626  git push
+  627  git remote -v
+  628  git push origin production
+  629  git push
+  630  ls
+  631  ll
+  632  cd
+  633  cd /etc/puppetlabs/code/environments
+  634  ls
+  635  cd production/
+  636  ls
+  637  ls modules/
+  638  mkdir manifests
+  639  cd manifests/
+  640  touch site.pp
+  641  cd..
+  642  ls
+  643  cd ..
+  644  git status
+  645  git add *
+  646  git commit -am "-"
+  647  git push
+  648  git status
+  649  git push
+  650  ls
+  651  git remote -v
+  652  git push origin
+  653  git push origin master
+  654  git branch
+  655  git checkout production
+  656  fir push
+  657  git push
+  658  git remote -v
+  659  git push case master
+  660  git push cache master
+  661  ls
+  662  git status
+  663  git remote -v
+  664  cd /var/
+  665  ls
+  666  cd cache/
+  667  ls
+  668  cd r10k
+  669  ls
+  670  cd git@github.com-atingupta2005-puppet_env.git/
+  671  ls
+  672  git status
+  673  git push
+  674  git remote -v
+  675  git push origin production
+  676  git push
+  677  clear
+  678  cd
+  679  cd /etc/puppetlabs/code/environments
+  680  cd production/
+  681  ls
+  682  cd manifests/
+  683  ls
+  684  pwd
+  685  nano atin.pp
+  686  puppet agent -t
+  687  nano atin.pp
+  688  puppet agent -t
+  689  nano atin.pp
+  690  puppet agent -t
+  691  nano atin.pp
+  692  cat atin.pp
+  693  clear
+  694  puppet infrastructure status
+  695  cat /etc/puppetlabs/code/environments/production/manifests/atin.pp
+  696  cd /opt/puppetlabs/puppet-metrics-collector
+  697  ls
+  698  cd system_cpu
+  699  ls
+  700  cd vmpuppetmstr/
+  701  ls
+  702  nano 20220901T024727Z.json
+  703  ll -al
+  704  cd ..
+  705  ls
+  706  cd ..
+  707  ls
+  708  cd system_memory/
+  709  ls
+  710  cd vmpuppetmstr/
+  711  ls
+  712  cat 20220901T030728Z.json
+  713  cd ..
+  714  ls
+  715  cd system_processes/
+  716  ls
+  717  cd vmpuppetmstr/
+  718  ls
+  719  cat 20220901T024728Z.json
+  720  puppet access login
+  721  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  722  puppet query 'facts[certname,value] { name = "agent_status_check" }'
+  723  puppet resource service puppet ensure=running
+  724  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  725  pwd
+  726  cd /etc/puppetlabs/code/environments/production/
+  727  ls
+  728  cd manifests/
+  729  ls
+  730  nano atin.pp
+  731  puppet agent -t
+  732  puppet module install puppetlabs-pe_status_check --version 2.3.1
+  733  puppet agent -t
+  734  puppet resource service puppet ensure=running
+  735  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  736  puppet module install puppetlabs-pe_status_check
+  737  pwd
+  738  cd ..
+  739  ls
+  740  cd modules
+  741  ls
+  742  tree pe_status_check/
+  743  tree pe_status_check
+  744  yum install tree
+  745  tree pe_status_check
+  746  cd pe_status_check/
+  747  ls
+  748  cat manifests/init.pp
+  749  ls
+  750  cat manifests/agent_status_enable.pp
+  751  cd ..
+  752  cd manifests/
+  753  ls
+  754  nano atin.pp
+  755  ls
+  756  puppet agent -t
+  757  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  758  puppet query 'facts { name = "pe_status_check" }'
+  759  puppet module list
+  760  ls -la /etc/puppetlabs/license.key
+  761  puppet query 'facts { name = "pe_status_check" }'
+  762  puppet query 'facts[certname,value] { name = "agent_status_check" }'
+  763  nano atin.pp
+  764  puppet query 'facts[certname,value] { name = "agent_status_check" }'
+  765  clear
+  766  sudo /opt/puppetlabs/bin/puppetserver ca list --all
+  767  clear
+  768  puppet node purge  vmpuppetwin2.khvoeymc241elkaxfvyyjopfdc.cx.internal.cloudapp.net
+  769  puppetserver ca clean --certname vmpuppetwin2.khvoeymc241elkaxfvyyjopfdc.cx.internal.cloudapp.net
+  770  sudo /opt/puppetlabs/bin/puppetserver ca list --all
+  771  puppet node purge vmpuppet5.a52ueuzmixiezk3rj1bvuw4ame.bx.internal.cloudapp.net
+  772  clear
+  773  cd /etc/puppetlabs/code/environments/production/modules
+  774  ls
+  775  cd ..
+  776  ls
+  777  cd manifests/
+  778  ls
+  779  cat atin.pp
+  780  cd ..
+  781  ls
+  782  git status
+  783  git add *
+  784  git commit -am "-"
+  785  git push
+  786  git pull
+  787  git push
+  788  ls
+  789  clear
+  790  gem install r10k
+  791  /opt/puppetlabs/puppet/bin/gem install r10k
+  792  vim /etc/puppetlabs/r10k/r10k.yaml
+  793  git push
+  794  cd /etc/puppetlabs/
+  795  ls
+  796  cd code/
+  797  ls
+  798  cd environments
+  799  ls
+  800  cd /proc/
+  801  cd ..
+  802  cd production/
+  803  cd code/
+  804  ls
+  805  cd /etc/puppetlabs/
+  806  ls
+  807  cd code/
+  808  ls
+  809  cd environments
+  810  ls
+  811  cd production/
+  812  ls
+  813  ls -lrt
+  814  vi site.pp
+  815  ls -lrt
+  816  puppet module install puppetlabs-pe_status_check
+  817  cd /etc/puppetlabs/code/environments/production
+  818  vim site.pp
+  819  puppet agent -t
+  820  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  821  puppet resource service puppet ensure=running
+  822  puppet access login
+  823  puppet resource service puppet ensure=running
+  824  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  825  puppet query 'facts[certname,value] { name = "agent_status_check" }'
+  826  puppet query 'inventory[certname] { facts.pe_status_check.S0040 = false }'
+  827  cd /opt/puppetlabs/puppet-metrics-collector
+  828  grep <metric_name> <service_name>/vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.bx.internal.cloudapp.net/*.json
+  829  grep <metric_name> vmpuppet12 /vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.bx.internal.cloudapp.net/*.json
+  830  grep  vmpuppet12 /vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.bx.internal.cloudapp.net/*.json
+  831  grep average-free-jrubies puppetserver/vmpuppetmstr.myl52jycogeulm2bcfcy5sblqd.bx.internal.cloudapp.net/*.json
+  832  cd /etc/puppetlabs/code/environments
+  833  ll
+  834  cd production/
+  835  ll
+  836  vi site.pp
+  837  puppet query 'facts[certname,value] { name = "pe_status_check" }'
+  838  puppet query 'facts[certname,value] { name = "agent_status_check" }'
+  839  puppet query 'inventory[certname] { facts.pe_status_check.S0040 = false }'
+  840  puppet query 'facts[certname,value] { name = "agent_status_check" }'
+  841  ssh anindya@52.151.249.176
+  842  cd /etc/puppetlabs/
+  843  ls
+  844  cd code/
+  845  cd environments
+  846  ls
+  847  cd production/
+  848  ls
+  849  cd manifests/
+  850  ls
+  851  clear
+  852  ls
+  853  nani anin.pp
+  854  nano anin.pp
+  855  puppet module install puppetlabs-reboot --version 4.2.0
+  856  puppet module install puppetlabs-reboot
+  857  nano anin.pp
+  858  puppet apply anin.pp
+  859  nano anin.pp
+  860  puppet apply anin.pp
+  861  vi  anin.pp
+  862  ppet apply anin.pp
+  863  puppet apply anin.pp
+  864  puppet agent -t
+  865  vi  anin.pp
+  866  puppet agent -t
+  867  vi  anin.pp
+  868  puppet agent -t
+  869  vi  anin.pp
+  870  puppet agent -t
+  871  nano site.pp
+  872  nano atin.pp
+  873  puppet agent -t
+  874  ls
+  875  nano atin.pp
+  876  nano anin.pp
+  877  puppet agent -t
+  878  nano anin.pp
+  879  puppet agent -t
+  880  date
+  881  cd /etc/puppetlabs/code/modules/
+  882  ll
+  883  cd stdlib/
+  884  ll
+  885  pwd
+  886  cd ../../
+  887  ll
+  888  cd environments/production/manifests/
+  889  ll
+  890  anin.pp
+  891  cp atin.pp anin.pp
+  892  vi anin.pp
+  893  cat atin.pp
+  894  cat site.pp
+  895  vi anin.pp
+  896  puppet apply anin.pp
+  897  cd environments/production/manifests/
+  898  cd /etc/puppetlabs/co
+  899  cd /etc/puppetlabs/code/
+  900  ll
+  901  cd environments/production/
+  902  ll
+  903  ll manifests/
+  904  cd manifests/
+  905  ll
+  906  vi anin.pp
+  907  puppet apply anin.pp
+  908  puppet agent -t
+  909  vi anin.pp
+  910  cd /etc/puppetlabs/
+  911  cd code/
+  912  cd env
+  913  ls
+  914  cd environments
+  915  cd production/
+  916  ls
+  917  cd manifests/
+  918  ls
+  919  nano anin.pp
+  920  puppet agent -t
+  921  nano anin.pp
+  922  history | grep python
+  923  history
+  924  authconfig --test | grep hashing
+  925  cd /etc/
+  926  cd puppetlabs/
+  927  cd code/environments/production/manifests/
+  928  ls
+  929  rm anin.pp
+  930  cat atin.pp
+  931  cat site.pp
+  932  ls
+  933  ll
+  934  cat atin.pp
+  935  history
+  936  cd code/environments/production/manifests/
+  937  cd /etc/puppetlabs/code/environments/production/manifests/
+  938  ls
+  939  puppet agent -t
+  940  cd /etc/puppetlabs/code/environments/production/manifests/
+  941  puppet agent -t
+  942  pam_tally2 -u root
+  943  clear
+  944  puppet module uninstall reboot
+  945  puppet module uninstall puppetlabs-reboot
+  946  htop
+  947  top
+  948  q
+  949  cd /etc/puppetlabs/puppetdb/conf.d
+  950  nano jetty.ini
+  951  curl http://40.87.12.160:8080/pdb/query/v4/users
+  952  curl http://40.87.12.160:8080/users
+  953  package { 'screen':
+  954  ensure => 'installed',
+  955  }
+  956  cd /etc/puppetlabs/
+  957  ls
+  958  cd code/
+  959  ls
+  960  cd environments
+  961  ls
+  962  cd production/
+  963  ls
+  964  cd manifests/
+  965  ls
+  966  vi package.pp
+  967  pwd
+  968  ls
+  969  vi package.pp
+  970  ls
+  971  vi package.pp
+  972  vi akhila.pp
+  973  cd /etc/puppetlabs/
+  974  ls
+  975  cd code/
+  976  ls
+  977  ll
+  978  cd environments
+  979  ll
+  980  cd production/
+  981  ls
+  982  cat site.pp
+  983  ll
+  984  vi site.pp
+  985  cd manifests/
+  986  ll
+  987  cd ..
+  988  ll
+  989  rm -rf site.pp
+  990  ll
+  991  cd manifests/
+  992  ll
+  993  vi sample.pp
+  994  ll
+  995  rm -rf sample.pp
+  996  ll
+  997  vi package.pp
+  998  rpm -qa | grep -i screen
+  999  gem install bolt
+ 1000  history |grep gem
+ 1001  /opt/puppetlabs/puppet/bin/gem install bolt
+ 1002  bolt
+ 1003  find /opt/puppetlabs/puppet/bin/gem -name bolt
+ 1004  find /opt/puppetlabs/ -name bolt
+ 1005  /opt/puppetlabs/puppet/bin/bolt
+ 1006  mkdir my_project; cd my_project
+ 1007  /opt/puppetlabs/puppet/bin/bolt project init my_project
+ 1008  bolt command run whoami -t 127.0.0.1:22 -u atingupta2005 -p <My-Azure-Passwd>  --no-host
+ 1009  /opt/puppetlabs/puppet/bin/bolt command run whoami -t 127.0.0.1:22 -u atingupta2005 -p <My-Azure-Passwd>  --no-host
+ 1010  ls
+ 1011  nano inventory.yaml
+ 1012  bolt command run whoami -t target1
+ 1013  /opt/puppetlabs/puppet/bolt command run whoami -t target1
+ 1014  /opt/puppetlabs/puppet/bin/bolt command run whoami -t target1
+ 1015  /opt/puppetlabs/puppet/bin/bolt command run whoami -t containers
+ 1016  /opt/puppetlabs/puppet/bin/bolt command run whoami -t all
+ 1017  mkdir -p modules/apache/plans; mkdir -p modules/apache/files
+ 1018  tree .
+ 1019  yum install tree -y
+ 1020  tree .
+ 1021  ssh amitrajput@40.87.44.136
+ 1022  ssh amitrajput@40.87.44.136 -p <My-Azure-Passwd>
+ 1023  sshpass -p <My-Azure-Passwd> ssh amitrajput@40.87.44.136
+ 1024  sshpass -p <My-Azure-Passwd> | ssh amitrajput@40.87.44.136
+ 1025  sshpass -p <My-Azure-Passwd> | ssh -o StrictHostKeyChecking=no  amitrajput@40.87.44.136
+ 1026  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  amitrajput@40.87.44.136
+ 1027  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  anindya@52.151.249.176
+ 1028  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  amitrajput@40.87.44.136
+ 1029  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  atingupta2005@40.87.12.160
+ 1030  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  amitrajput@40.87.44.136
+ 1031  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  anindya@52.151.249.176
+ 1032  cd my_project
+ 1033  cd ~/my_project
+ 1034  vi inventory.yaml
+ 1035  /opt/puppetlabs/puppet/bin/bolt command run whoami -t target1
+ 1036  /opt/puppetlabs/puppet/bin/bolt command run whoami -t containers
+ 1037  /opt/puppetlabs/puppet/bin/bolt command run whoami -t all
+ 1038  nano modules/apache/plans/install.yaml
+ 1039  cd ~/my_project
+ 1040  mkdir -p modules/apache/plans; mkdir -p modules/apache/files
+ 1041  tree .
+ 1042  nano modules/apache/plans/install.yaml
+ 1043  nano modules/apache/plans/start_apache.sh
+ 1044  nano modules/apache/files/index.html
+ 1045  tree .
+ 1046  /opt/puppetlabs/puppet/bin/bolt plan run apache::install -t containers src=apache/index.html
+ 1047  nano modules/apache/plans/install.yaml
+ 1048  /opt/puppetlabs/puppet/bin/bolt plan run apache::install -t containers src=apache/index.html
+ 1049  bolt task show
+ 1050  /opt/puppetlabs/puppet/bin/bolt task show
+ 1051  /opt/puppetlabs/puppet/bin/gem uninstall bolt
+ 1052  /opt/puppetlabs/puppet/bin/bolt task show
+ 1053  sudo rpm -Uvh https://yum.puppet.com/puppet-tools-release-el-6.noarch.rpm
+ 1054  sudo yum install puppet-bolt
+ 1055  sudo yum install puppet-bolt -y
+ 1056  bolt
+ 1057  bolt command run whoami -t all
+ 1058  bolt task show
+ 1059  bolt plan run apache::install -t containers src=apache/index.html
+ 1060  bolt plan run apache::install -t containers src=apache/index.html --run-as boltuser
+ 1061  bolt plan run apache::install -t containers src=apache/index.html --run-as boltuser --sudo-password-prompt --sudo-executable EXEC
+ 1062  nano inventory.yaml
+ 1063  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  amitrajput@40.87.44.136
+ 1064  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  anindya@52.151.249.176
+ 1065  bolt plan run apache::install -t containers src=apache/index.html
+ 1066  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  amitrajput@40.87.44.136
+ 1067  nano modules/apache/plans/install.yaml
+ 1068  bolt plan run apache::install -t containers src=apache/index.html
+ 1069  tree .
+ 1070  rm -rf modules/apache/plans/start_apache.sh
+ 1071  nano modules/apache/plans/start_apache.sh
+ 1072  bolt plan run apache::install -t containers src=apache/index.html
+ 1073  tree .
+ 1074  rm -rf modules/apache/plans/start_apache.sh
+ 1075  nano modules/apache/start_apache.sh
+ 1076  bolt plan run apache::install -t containers src=apache/index.html
+ 1077  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  anindya@52.151.249.176
+ 1078  nano modules/apache/start_apache.sh
+ 1079  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  anindya@52.151.249.176
+ 1080  nano modules/apache/start_apache.sh
+ 1081  bolt plan run apache::install -t containers src=apache/index.html
+ 1082  curl 40.87.44.136
+ 1083  curl 40.87.44.136:8080
+ 1084  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  anindya@52.151.249.176
+ 1085  curl 52.151.249.176
+ 1086  mkdir -p system-info; cd system-info
+ 1087  bolt project init systeminfo
+ 1088  ls
+ 1089  mkdir -p tasks; cd tasks
+ 1090  nano checkdocker.sh
+ 1091  nano checkdocker.json
+ 1092  bolt task show
+ 1093  bolt task show | grep docker
+ 1094  bolt task run systeminfo::checkdocker --no-host-key-check --user root --targets 40.87.44.136,52.151.249.176
+ 1095  bolt task run --help
+ 1096  bolt task run systeminfo::checkdocker --no-host-key-check --user root -p <My-Azure-Passwd>  --targets 40.87.44.136,52.151.249.176
+ 1097  clear
+ 1098  bolt
+ 1099  clear
+ 1100  cd
+ 1101  ls
+ 1102  rm -rf my_project
+ 1103  ls
+ 1104  mkdir -p ~/my_project; cd ~/my_project
+ 1105  bolt project init my_project
+ 1106  ls
+ 1107  cat bolt-project.yaml
+ 1108  cat inventory.yaml
+ 1109  clear
+ 1110  bolt command run whoami -t 127.0.0.1:22 -u root -p <My-Azure-Passwd>  --no-host-key-check
+ 1111  passwd root
+ 1112  bolt command run whoami -t 127.0.0.1:22 -u root -p <My-Azure-Passwd>  --no-host-key-check
+ 1113  bolt command run cat /etc/passwd -t 127.0.0.1:22 -u root -p <My-Azure-Passwd>  --no-host-key-check
+ 1114  bolt command run "cat /etc/passwd" -t 127.0.0.1:22 -u root -p <My-Azure-Passwd>  --no-host-key-check
+ 1115  vi inventory.yaml
+ 1116  bolt command run whoami -t all
+ 1117  bolt command run 'ip addr all' -t all
+ 1118  ip addr
+ 1119  bolt command run 'ip addr' -t all
+ 1120  bolt command run 'ip addr -i' -t all
+ 1121  bolt command run 'ip addr' -t all
+ 1122  bolt command run 'hostname -i' -t all
+ 1123  cat inventory.yaml
+ 1124  nano  inventory.yaml
+ 1125  bolt command run whoami -t all
+ 1126  cat inventory.yaml
+ 1127  bolt command run whoami -t containers_my
+ 1128  ssh atingupta2005@20.63.56.162
+ 1129  nano  inventory.yaml
+ 1130  bolt command run whoami -t containers_my
+ 1131  ssh root@20.63.56.162
+ 1132  ssh atingupta2005@20.63.56.162
+ 1133  ssh root@20.63.56.162
+ 1134  ssh atingupta2005@20.63.56.162
+ 1135  ssh root@20.63.56.162
+ 1136  bolt command run whoami -t containers_my
+ 1137  sshpass -p <My-Azure-Passwd> ssh -o StrictHostKeyChecking=no  root@20.63.56.162
+ 1138  bolt plan show
+ 1139  tree .module
+ 1140  tree .modules
+ 1141  ll
+ 1142  ll -al
+ 1143  nano inventory.yaml
+ 1144  bolt inventory show
+ 1145  nano inventory.yaml
+ 1146  bolt inventory show
+ 1147  bolt inventory show --detail
+ 1148  nano inventory.yaml
+ 1149  nano ~/myhosts.yaml
+ 1150  bolt inventory show
+ 1151  nano inventory.yaml
+ 1152  bolt inventory show
+ 1153  nano inventory.yaml
+ 1154  bolt inventory show
+ 1155  cat inventory.yaml | grep 20.63.56.162
+ 1156  cat inventory.yaml
+ 1157  bolt command run whoami -t containers_my
+ 1158  bolt command run whoami -t containers_my,containers
+ 1159  bolt command run whoami -t containers_my,52.151.249.176
+ 1160  cat ~/myhosts.yaml
+ 1161  bolt command run whoami -t containers_my,20.63.56.162
+ 1162  bolt command run whoami -t containers_my,20.63.56.163
+ 1163  nano inventory.yaml
+ 1164  ssh-keygen -i private_key
+ 1165  ssh-keygen -f private_key
+ 1166  ls
+ 1167  nano inventory.yaml
+ 1168  ls
+ 1169  ssh-copy-id -i private_key root@40.87.44.136
+ 1170  ssh-copy-id -i private_key root@52.151.249.176
+ 1171  ssh-copy-id -i private_key.pub root@40.87.12.160
+ 1172  ssh-copy-id -i private_key.pub root@52.151.249.176
+ 1173  ssh-copy-id -f  -i private_key.pub root@52.151.249.176
+ 1174  ssh-copy-id -f  -i private_key.pub root@40.87.44.136
+ 1175  ssh-copy-id -f  -i private_key.pub root@20.63.56.162
+ 1176  ssh -i private_key root@40.87.44.136
+ 1177  ssh -i private_key root@52.151.249.176
+ 1178  ssh -i private_key root@40.87.12.160
+ 1179  ssh -i private_key root@20.63.56.162
+ 1180  cat inventory.yaml
+ 1181  bolt command run whoami -t containers_my,20.63.56.163
+ 1182  bolt command run whoami -t all
+ 1183  nano inventory.yaml
+ 1184  bolt command run whoami -t all
+ 1185  history
