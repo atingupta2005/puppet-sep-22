@@ -131,14 +131,20 @@ puppet apply -e "include mysql::server"
 
 ## TimeSync
  - Ideally, we have accurate time on the server and agents. We can test Puppet from the command line to ensure Chronyd is installed and running
+```
 puppet apply -e 'package { "chrony": ensure => installed }'
 puppet apply -e 'service { "chronyd": ensure => running , enable => true }'
+```
 
 ## Idempotent
  - Puppet, being Idempotent, allows the command to run many times and only actions if we do not meet the configuration requirement
+```
 puppet apply -e 'service { "chronyd": ensure => running , enable => true }'
 systemctl stop chronyd
 puppet apply -e 'service { "chronyd": ensure => running , enable => true }'
+```
 
 # Remove
+```
 puppet apply -e 'package { "chrony": ensure => absent }'
+```
