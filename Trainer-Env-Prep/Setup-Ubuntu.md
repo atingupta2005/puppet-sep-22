@@ -34,14 +34,14 @@ sudo apt -y install openssl zip tree wget unzip
 - For each participant, we need to setup login accounts
 ```
 sudo groupadd docker
-for ((i=1;i<=20;i++)); do
+for ((i=1;i<=45;i++)); do
 	export username="u$i"
 	sudo useradd -m -p "p2" $username;sudo usermod -aG sudo $username;sudo usermod -aG docker $username;echo $username:p | sudo /usr/sbin/chpasswd;sudo chown -R  $username:root /home/$username
 done
 ```
 
 ```
-for ((i=1;i<=20;i++)); do
+for ((i=1;i<=45;i++)); do
 	export username="u$i"
 	sudo usermod -aG sudo $username
 	sudo usermod -aG wheel $username
@@ -60,7 +60,7 @@ sudo apt-get -y install r-base
 ```
 sudo apt-get  -y install gdebi-core
 wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2021.09.0-351-amd64.deb
-sudo gdebi rstudio-server-2021.09.0-351-amd64.deb
+sudo gdebi rstudio-server-4521.09.0-351-amd64.deb
 ```
 ```
 free -h

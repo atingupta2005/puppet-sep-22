@@ -7,6 +7,8 @@
   - No agent configuration
   - Used as data source
   - Replace flat files
+
+
 ```
 cd /etc/puppetlabs/puppetdb/conf.d
 nano jetty.ini
